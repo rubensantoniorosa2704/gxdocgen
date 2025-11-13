@@ -1,0 +1,76 @@
+package model
+
+// GXObject represents a GeneXus object extracted from an XPZ file
+type GXObject struct {
+	// Name is the object's identifier (e.g., "CustomerTransaction")
+	Name string
+
+	// Type is the object type (e.g., "Transaction", "Procedure", "WebPanel")
+	Type string
+
+	// Path is the relative file path within the XPZ archive
+	Path string
+
+	// SourceCode contains the extracted source code (for Procedures, DataProviders, etc.)
+	SourceCode string
+
+	// ParmSignature contains the Parm() declaration for Procedures
+	ParmSignature string
+
+	// Documentation contains parsed annotation comments
+	Documentation *DocComment
+}
+
+// DocComment represents parsed documentation from structured comments
+type DocComment struct {
+	// Package is the logical grouping (@package)
+	Package string
+
+	// Summary is a short description (@summary)
+	Summary string
+
+	// Description is an extended explanation (@description)
+	Description string
+
+	// Author is the developer responsible (@author)
+	Author string
+
+	// Created is the creation date in ISO format (@created)
+	Created string
+
+	// Parameters describes procedure parameters (@param)
+	Parameters []ParameterDoc
+
+	// Return describes the return type or SDT (@return)
+	Return string
+
+	// ExampleRequest is a JSON example for request body (@example-request)
+	ExampleRequest string
+
+	// ExampleResponse is a JSON example for response body (@example-response)
+	ExampleResponse string
+
+	// Tags are OpenAPI tags for grouping endpoints (@tag)
+	Tags []string
+
+	// Deprecated indicates if the object is deprecated (@deprecated)
+	Deprecated bool
+
+	// DeprecationNote contains the deprecation message
+	DeprecationNote string
+}
+
+// ParameterDoc represents a procedure parameter
+type ParameterDoc struct {
+	// Name is the parameter name (e.g., "UserID")
+	Name string
+
+	// Direction is IN, OUT, or INOUT
+	Direction string
+
+	// Type is the GeneXus type (e.g., "Numeric:UserId", "Character", "sdtUser")
+	Type string
+
+	// Description explains the parameter's purpose
+	Description string
+}
