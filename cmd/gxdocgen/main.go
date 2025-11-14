@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	version = "0.1.0"
+	version = "0.1.1"
 )
 
 func main() {
@@ -111,7 +111,7 @@ func validateInput(path string) error {
 func printBanner() {
 	fmt.Println()
 	fmt.Println("╔═══════════════════════════════════════╗")
-	fmt.Println("║         GXDocGen v" + version + "     ║")
+	fmt.Println("║         GXDocGen v" + version + "               ║")
 	fmt.Println("║  GeneXus Documentation Generator      ║")
 	fmt.Println("╚═══════════════════════════════════════╝")
 	fmt.Println()
